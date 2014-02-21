@@ -16,9 +16,19 @@ def add_product():
   return "/product/" + str(prod.id)
 
 @app.route('/product/<id>')
-def sell():
-  # Use the id to get product data from db
-  return render_template('pdp.html')
+def product(id=None):
+  try:
+    int_id = int(id)
+    if int_id == None or int_id < 0:
+      return render_template("404.html")
+  except:
+    return render_template("404.html")
+
+  prod = models.Product.query.get(int_id)
+  if prod:
+      return render_template("pdp.html", prod=prod)
+  else:
+      return render_template("404.html")
 
 @app.route('/sell')
 def sell():
