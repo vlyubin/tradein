@@ -1,15 +1,16 @@
 $("#submitButton").click(function(){
   var $form = $("#submitForm");
   var $inputs = $form.find("input, a, textarea");
-
   $inputs.prop("disabled", true);
 
   request = $.ajax({
   	url: "/add",
     type: "post",
     data: {
-    	description: $('#descf').val(),
-    	title: $('#titlef').val()
+    	desc: $('#descf').val(),
+    	title: $('#titlef').val(),
+      category: $('#categoryf').val(),
+      price: $('#pricef').val()
     },
   });
 
@@ -19,6 +20,6 @@ $("#submitButton").click(function(){
 
   request.fail(function (jqXHR, textStatus, errorThrown){
     $inputs.prop("disabled", false);
-    alert("Whoops, something went wrong :(");
+    alert("Whoops, something went wrong :(" + errorThrown);
   });
 });
