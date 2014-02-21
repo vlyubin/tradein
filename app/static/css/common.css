@@ -4,3 +4,11 @@
   margin-left:-100px;
 }
 
+.navbar-brand {
+	padding: 5px 15px 0 15px;
+}
+
+#searchbar {
+	margin-right: 2%;
+
+}
