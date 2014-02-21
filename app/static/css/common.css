@@ -1,6 +1,20 @@
+#view-btn {
+	display: block;
+	margin: 10px auto auto auto;
+	width: 90%;
+}
+
 #submitDiv {
   position: relative;
   left:50%;
   margin-left:-100px;
+}
+
+.navbar-brand {
+	padding: 4px 15px 0 15px;
+}
+
+#searchbar {
+	margin-right: 2%;
 }
 

@@ -8,68 +8,22 @@
 	
 	<div class="container">
 		<div class="row">
+			{% for product in products %}
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="http://placehold.it/300x200" alt="...">
-					<div class="caption">
-						<h3>Ipod Touch 2nd Gen</h3>
-						<p>...</p>
-						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+					<img src="http://placehold.it/300x300" alt="...">
+					<div class="caption product">
+						<h3>{{product.title}}</h3>
+						<p>{{product.desc}}</p>
 					</div>
+					<p><a href="/product/{{product.id}}" class="btn btn-primary" role="button" id="view-btn">View</a></p>
 				</div>
 			</div>
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x200" alt="...">
-					<div class="caption">
-						<h3>Ipod Touch 2nd Gen</h3>
-						<p>...</p>
-						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x200" alt="...">
-					<div class="caption">
-						<h3>Ipod Touch 2nd Gen</h3>
-						<p>...</p>
-						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x200" alt="...">
-					<div class="caption">
-						<h3>Ipod Touch 2nd Gen</h3>
-						<p>...</p>
-						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x200" alt="...">
-					<div class="caption">
-						<h3>Ipod Touch 2nd Gen</h3>
-						<p>...</p>
-						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-3">
-				<div class="thumbnail">
-					<img src="http://placehold.it/300x200" alt="...">
-					<div class="caption">
-						<h3>Ipod Touch 2nd Gen</h3>
-						<p>...</p>
-						<p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-					</div>
-				</div>
-			</div>
+			{% endfor %}
 		</div>
 	</div>
+
+	<script src="/static/js/homepage.js"></script>
 </body>
 
 
