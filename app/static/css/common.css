@@ -1,5 +1,7 @@
 #view-btn {
-	width: 100%;
+	display: block;
+	margin: 10px auto auto auto;
+	width: 90%;
 }
 
 #submitDiv {
@@ -14,5 +16,5 @@
 
 #searchbar {
 	margin-right: 2%;
-
 }
+
