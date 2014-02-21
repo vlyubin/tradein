@@ -4,12 +4,12 @@ from app import app, models, db
 from flask.ext.sqlalchemy import SQLAlchemy
 from datetime import datetime
 
-@app.route('/add')
+@app.route('/add', methods = ['POST'])
 def add_product():
   title = request.form.get('title')
   description = request.form.get('description')
 
-  prod = models.Product(title=title, description=description)
+  prod = models.Product(title=title, desc=description, userid='FakeSoFake')
   db.session.add(prod)
   db.session.commit()
 
