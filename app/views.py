@@ -34,19 +34,26 @@ def product(id=None):
 def sell():
   return render_template('sell.html')
 
-@app.route('/search', methods = ['POST'])
+@app.route('/search/<query>', methods = ['POST'])
 def search():
-  return "TODO"
+  products = db.session.query(models.Product).limit(20).all()
+
+  product_list = []
+  for prod in products:
+    product_list.append({'three': 3, 'one': 1, 'two': 2})
+
+  return jsonify(products=product_list)
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('homepage.html')
+  products = db.session.query(models.Product).limit(20).all()
+  return render_template('homepage.html', products=products)
 
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html'), 404
+  return render_template('404.html'), 404
 
 @app.errorhandler(500)
 def page_not_found(e):
-    return render_template('500.html'), 500
+  return render_template('500.html'), 500

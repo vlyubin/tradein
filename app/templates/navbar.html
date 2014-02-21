@@ -1,8 +1,9 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"> 
-        <img src="/static/images/TradeIn2.png" width=140 height = > 
+
+      <a class="navbar-brand" href="/"> 
+        <img src="/static/images/TradeIn2.png" width=140 height = 40> 
         - Linkedin's Internal Marketplace
       </a>
     </div>
@@ -10,8 +11,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav navbar-right">
-        <button type="button" class="btn btn-default navbar-btn">Dashboard</button>
-        <button type="button" class="btn btn-default navbar-btn">Sell</button>
+        <button id="nav-dashboard" type="button" class="btn btn-default navbar-btn" onclick="clickDashboard()">Dashboard</button>
+        <button id="nav-sell" type="button" class="btn btn-default navbar-btn" onclick="clickSell()">Sell</button>
 
       </ul>
       <form class="navbar-form navbar-right" role="search" id="searchbar">
