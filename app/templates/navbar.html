@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#"> 
+      <a class="navbar-brand" href="/"> 
         <img src="/static/images/TradeIn2.png" width=123 height = 35> 
         - Linkedin's Internal Marketplace
       </a>
@@ -16,9 +16,8 @@
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
-		<button type="button" class="btn btn-default navbar-btn">Dashboard</button>
-		<button type="button" class="btn btn-default navbar-btn">Sell</button>
-
+    		<button id="nav-dashboard" type="button" class="btn btn-default navbar-btn" onclick="clickDashboard()">Dashboard</button>
+    		<button id="nav-sell" type="button" class="btn btn-default navbar-btn" onclick="clickSell()">Sell</button>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
