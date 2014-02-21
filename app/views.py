@@ -4,18 +4,27 @@ from app import app, models, db
 from flask.ext.sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+@app.route('/add')
 def add_product():
-  return "TODO"
+  title = request.form.get('title')
+  description = request.form.get('description')
 
-@app.route('/product')
+  prod = models.Product(title=title, description=description)
+  db.session.add(prod)
+  db.session.commit()
+
+  return "/product/" + str(prod.id)
+
+@app.route('/product/<id>')
 def sell():
-  return "TODO"
+  # Use the id to get product data from db
+  return render_template('pdp.html')
 
 @app.route('/sell')
 def sell():
-  return "TODO"
+  return render_template('sell.html')
 
-@app.route('/search')
+@app.route('/search', methods = ['POST'])
 def search():
   return "TODO"
 
