@@ -20,15 +20,15 @@ def product(id=None):
   try:
     int_id = int(id)
     if int_id == None or int_id < 0:
-      return render_template("404.html")
+      return render_template('404.html'), 404
   except:
-    return render_template("404.html")
+    return render_template('404.html'), 404
 
   prod = models.Product.query.get(int_id)
   if prod:
       return render_template("pdp.html", prod=prod)
   else:
-      return render_template("404.html")
+      return render_template('404.html'), 404
 
 @app.route('/sell')
 def sell():
