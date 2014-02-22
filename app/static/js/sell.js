@@ -3,7 +3,7 @@ $("#submitButton").click(function(){
   var $inputs = $form.find("input, a, textarea");
   $inputs.prop("disabled", true);
   
-  if ($('#addedit') === 'add') {
+  if ($('#addedit').val() === 'add') {
     request = $.ajax({
       url: '/add',
       type: "post",
