@@ -35,10 +35,22 @@ def product(id=None):
   else:
       return render_template('404.html'), 404
 
+@app.route('/sell/<id>')
+def edit_sell(id=None):
+  try:
+    int_id = int(id)
+    if int_id < 0:
+      return render_template('404.html'), 404
+  except:
+    return render_template('404.html'), 404
+
+  prod = Product.query.get(int_id)
+  return render_template('sell.html', product=prod)
+
 @app.route('/sell')
 def sell():
-  return render_template('sell.html')
-
+  return render_template('sell.html', product={})
+  
 @app.route('/search/<query>', methods = ['GET'])
 def search(query=None):
   query = str(query)
