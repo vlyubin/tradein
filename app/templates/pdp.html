@@ -6,65 +6,109 @@
 <body>
 	{% include 'navbar.html' %}	
 	<div class="container">
-		<div align="center">
-			<h1> {{ prod.title }} </h1>
+		<div class="row" align="left">
+			<div class="page-header">
+				<h1>{{ prod.title}} </h1>
+			</div>
 		</div>
-		<div class="thumbnail">
-			<div align="left">
+		<div class="row">
+			<div class="thumbnail">
+				<div class="row">
+					<div class="col-md-5">
+						<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="max-width: 400px; height: 300px">
+							<!-- Indicators -->
+							<ol class="carousel-indicators">
+								<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+								<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+								<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+							</ol>
 
-				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="max-width: 600px; height: 500px">
-					<!-- Indicators -->
-					<ol class="carousel-indicators">
-						<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-						<li data-target="#carousel-example-generic" data-slide-to="2"></li>
-					</ol>
-
-					<!-- Wrapper for slides -->
-					<div class="carousel-inner">
-						<div class="item active">
-							<div align="center">
-
-								<div style="width:600px;height:500px;overflow:hidden;" >
-									<img src="{{ prod.img1 }}" alt="..." width="600" height="500">
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item active">
+									<div align="center">
+										<div class="scrollingimagewrapper">
+											<img class="scrollingimage" src="{{ prod.img1 }}">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="item">
-							<div align="center">
-
-								<div style="width:600px;height:500px;overflow:hidden;" >
-									<img src="http://i.imgur.com/RbRXdAv.jpg" alt="..." width="600" height="500">
+								<div class="item">
+									<div align="center">
+										<div class="scrollingimagewrapper">
+											<img class="scrollingimage" src="http://i.imgur.com/RbRXdAv.jpg">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
 
-						<div class="item">
-							<div align="center">
-								<div style="width:600px;height:500px;overflow:hidden;" >
-									<img src="http://upload.wikimedia.org/wikipedia/commons/b/b5/Google_Videos_logo.png" alt="..." width="600" height="500">
+								<div class="item">
+									<div align="center">
+										<div class="scrollingimagewrapper">
+											<img class="scrollingimage" src="http://upload.wikimedia.org/wikipedia/commons/b/b5/Google_Videos_logo.png">
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>
 
+							</div>
+
+							<!-- Controls -->
+							<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+								<span class="glyphicon glyphicon-chevron-left"></span>
+							</a>
+							<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+								<span class="glyphicon glyphicon-chevron-right"></span>
+							</a>
+						</div>
 					</div>
-
-					<!-- Controls -->
-					<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-						<span class="glyphicon glyphicon-chevron-left"></span>
-					</a>
-					<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-						<span class="glyphicon glyphicon-chevron-right"></span>
-					</a>
+					<div class="col-md-7">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h3 class="panel-title">Price</h3>
+							</div>
+							<div class="panel-body">
+								{{prod.price}}
+							</div>
+						</div>
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								<h3 class="panel-title">Category</h3>
+							</div>
+							<div class="panel-body">
+								{{prod.category}}
+							</div>
+						</div>
+						<div class="panel panel-danger">
+							<div class="panel-heading">
+								<h3 class="panel-title">Seller</h3>
+							</div>
+							<div class="panel-body">
+								Jeff Weiner
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="media-body">
-			<h4 id="description"> {{ prod.desc }} <h4>
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Description</h3>
+				</div>
+				<div class="panel-body">
+					{{prod.desc}}
+				</div>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">Contact</h3>
+				</div>
+				<div class="panel-body">
+					Cinco Stuff
+				</div>
 			</div>
 		</div>
 	</div>
+</div>
 
 </raw>
 

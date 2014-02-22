@@ -18,6 +18,17 @@
 	margin-right: 2%;
 }
 
+.scrollingimagewrapper {
+	width:400px;
+	height:300px;
+	overflow:hidden;
+}
+
+.scrollingimage{
+	width: inherit;
+	height: inherit;
+}
+
 .dashboard-img {
 	display: block;
 	margin: 0 auto;
