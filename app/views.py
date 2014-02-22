@@ -46,7 +46,7 @@ def search(query=None):
   for prod in products:
     product_list.append(prod.get_dict())
 
-  return jsonify(products=product_list)
+  return render_template('search.html', query=query, products=product_list)
 
 @app.route('/')
 @app.route('/index')
