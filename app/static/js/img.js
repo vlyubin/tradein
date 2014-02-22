@@ -1,0 +1,31 @@
+$(document).ready(function(){
+  var thumb = $("#thumb");
+  new AjaxUpload('imageUpload', {
+    action: $('form#imageUploadForm').attr('action'),
+    name: 'image',
+    onSubmit: function(file, extension) {
+      thumb.addClass('loading');
+    },
+    onComplete: function(file, response) {
+      thumb.removeClass('loading');
+      response = JSON.parse(response);
+      thumb.attr("src", response.file);
+      console.log(response.file);
+      //TODO Save the response.file to the DB afterwards
+    }
+  });
+});
+/*
+
+Usage:
+
+<form id="imageUploadForm" action="/img" method="post">
+  <img id="thumb" />
+  <input type="file" size="20" id="imageUpload">
+  <a class="button">Save</a>
+</form>
+
+<script src="static/js/ajaxupload.js"></script>
+<script src="static/js/img.js"></script>
+
+*/
