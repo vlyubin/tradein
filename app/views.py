@@ -8,11 +8,12 @@ from models import Product
 
 @app.route('/add', methods = ['POST'])
 def add_product():
-  title = request.form.get('title')
-  desc = request.form.get('desc')
-  category = request.form.get('category')
-  price = request.form.get('price')
+  title = str(request.form.get('title'))
+  desc = str(request.form.get('desc'))
+  category = str(request.form.get('category'))
+  price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # I need this for search
+
   prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, userid='FakeSoFake', category=category, price=int(price))
   db.session.add(prod)
   db.session.commit()
