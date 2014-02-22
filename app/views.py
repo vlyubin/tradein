@@ -52,7 +52,8 @@ def search(query=None):
 
 @app.route('/dashboard')
 def dashboard():
-	return render_template('dashboard.html')
+	products = db.session.query(Product).limit(20).all()
+	return render_template('dashboard.html', products=products)
 
 @app.route('/')
 @app.route('/index')
