@@ -11,6 +11,7 @@ $(document).ready(function(){
       response = JSON.parse(response);
       thumb.attr("src", response.file);
       console.log(response.file);
+      $("#imgLink").attr("value", response.file)
       //TODO Save the response.file to the DB afterwards
     }
   });
