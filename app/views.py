@@ -76,6 +76,7 @@ def upload_file():
     if extension not in app.config['ALLOWED_EXTENSIONS']:
       return json.dumps({"error":"File extension not allowed"})
     filename = os.urandom(16).encode('hex') + "." + extension
+    os.mkdir(upload_folder)
     file.save(os.path.join(upload_folder, filename))
     return json.dumps({"file":os.path.join('/static/uploads', filename)})
   if request.method == 'GET':
