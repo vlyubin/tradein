@@ -70,7 +70,7 @@ def add_product():
   imgLink2 = request.form.get('imgLink2')
   imgLink3 = request.form.get('imgLink3')
   imgLink4 = request.form.get('imgLink4')
-  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, user_token=str(session['tradein_user_oauth_token']), category=category, price=int(price), img1=imgLink, img2=imgLink2, img3=imgLink3, img4=imgLink4)
+  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, user_token=str(session['tradein_user_oauth_token']), category=category, price=price, img1=imgLink, img2=imgLink2, img3=imgLink3, img4=imgLink4)
 
   db.session.add(prod)
   db.session.commit()
