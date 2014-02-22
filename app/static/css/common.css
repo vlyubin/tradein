@@ -18,3 +18,13 @@
 	margin-right: 2%;
 }
 
+.dashboard-img {
+	width: 100%;
+	border-radius: 10px;
+}
+
+.dashboard-btn {
+	margin: 7px 5px;
+	padding: 10px 0px;
+	width: 90%;
+}

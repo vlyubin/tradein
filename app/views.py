@@ -50,6 +50,10 @@ def search(query=None):
 
   return render_template('search.html', query=query, products=product_list)
 
+@app.route('/dashboard')
+def dashboard():
+	return render_template('dashboard.html')
+
 @app.route('/')
 @app.route('/index')
 def index():

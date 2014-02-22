@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'header.html' %}
+	
+<body>
+	{% include 'navbar.html' %}
+
+	<div class="container">
+		<h1>Dashboard <small>Manage your products</small></h1>
+
+		<hr />
+		<div class="row dashboard-product">
+			<div class="col-md-2">
+				<img src="http://placehold.it/200x200" class="dashboard-img">	
+			</div>
+			<div class="col-md-8">
+				<h3>Title</h3>
+				<p>Category</p>
+				<p>$100</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			</div>
+			<div class="col-md-2">
+				<div class="row"><a class="dashboard-btn btn btn-primary">View</a></div>
+				<div class="row"><a class="dashboard-btn btn btn-warning">Edit</a></div>
+				<div class="row"><a class="dashboard-btn btn btn-danger">Remove</a></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
