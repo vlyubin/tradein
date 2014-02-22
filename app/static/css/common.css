@@ -18,8 +18,21 @@
 	margin-right: 2%;
 }
 
+.scrollingimagewrapper {
+	width:400px;
+	height:300px;
+	overflow:hidden;
+}
+
+.scrollingimage{
+	width: inherit;
+	height: inherit;
+}
+
 .dashboard-img {
-	width: 100%;
+	display: block;
+	margin: 0 auto;
+	width: 90%;
 	border-radius: 10px;
 }
 

@@ -9,23 +9,25 @@
 	<div class="container">
 		<h1>Dashboard <small>Manage your products</small></h1>
 
-		<hr />
+		{% for product in products %}
 		<div class="row dashboard-product">
-			<div class="col-md-2">
+		<hr />
+			<div class="col-sm-4 col-md-2">
 				<img src="http://placehold.it/200x200" class="dashboard-img">	
 			</div>
-			<div class="col-md-8">
-				<h3>Title</h3>
-				<p>Category</p>
-				<p>$100</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+			<div class="col-sm-6 col-md-8">
+				<h3>{{product.title}}</h3>
+				<p>{{product.category}}</p>
+				<p>${{product.price}}</p>
+				<p>{{product.desc}}</p>
 			</div>
-			<div class="col-md-2">
-				<div class="row"><a class="dashboard-btn btn btn-primary">View</a></div>
+			<div class="col-sm-2">
+				<div class="row"><a class="dashboard-btn btn btn-primary" href="/product/{{product.id}}">View</a></div>
 				<div class="row"><a class="dashboard-btn btn btn-warning">Edit</a></div>
 				<div class="row"><a class="dashboard-btn btn btn-danger">Remove</a></div>
 			</div>
 		</div>
+		{% endfor %}
 	</div>
 </body>
 
