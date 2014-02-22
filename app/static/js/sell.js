@@ -2,7 +2,7 @@ $("#submitButton").click(function(){
   var $form = $("#submitForm");
   var $inputs = $form.find("input, a, textarea");
   $inputs.prop("disabled", true);
-
+  
   request = $.ajax({
   	url: "/add",
     type: "post",
@@ -10,7 +10,8 @@ $("#submitButton").click(function(){
     	desc: $('#descf').val(),
     	title: $('#titlef').val(),
       category: $('#categoryf').val(),
-      price: $('#pricef').val()
+      price: $('#pricef').val(),
+      imgLink: $('#imgLink').val()
     },
   });
 

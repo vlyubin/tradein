@@ -13,8 +13,8 @@ def add_product():
   category = str(request.form.get('category'))
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # I need this for search
-
-  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, userid='FakeSoFake', category=category, price=int(price))
+  imgLink = request.form.get('imgLink')
+  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, userid='FakeSoFake', category=category, price=int(price), img1=imgLink)
   db.session.add(prod)
   db.session.commit()
 
@@ -82,6 +82,10 @@ def upload_file():
     if extension not in app.config['ALLOWED_EXTENSIONS']:
       return json.dumps({"error":"File extension not allowed"})
     filename = os.urandom(16).encode('hex') + "." + extension
+    try:
+      os.stat(upload_folder)
+    except:
+      os.mkdir(upload_folder)
     file.save(os.path.join(upload_folder, filename))
     return json.dumps({"file":os.path.join('/static/uploads', filename)})
   if request.method == 'GET':
