@@ -67,7 +67,11 @@ def add_product():
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # I need this for search
   imgLink = request.form.get('imgLink')
-  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, user_token=str(session['tradein_user_oauth_token']), category=category, price=int(price), img1=imgLink)
+  imgLink2 = request.form.get('imgLink2')
+  imgLink3 = request.form.get('imgLink3')
+  imgLink4 = request.form.get('imgLink4')
+  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, user_token=str(session['tradein_user_oauth_token']), category=category, price=int(price), img1=imgLink, img2=imgLink2, img3=imgLink3, img4=imgLink4)
+
   db.session.add(prod)
   db.session.commit()
 
@@ -88,12 +92,25 @@ def product(id=None):
   else:
       return render_template('404.html'), 404
 
+@app.route('/sell/<id>')
+def edit_sell(id=None):
+  try:
+    int_id = int(id)
+    if int_id < 0:
+      return render_template('404.html'), 404
+  except:
+    return render_template('404.html'), 404
+
+  prod = Product.query.get(int_id)
+  prod.type = 'edit';
+  return render_template('sell.html', product=prod);
+
 @app.route('/sell')
 def sell():
   # Redirect to login if no token
   if not 'tradein_user_oauth_token' in session or session['tradein_user_oauth_token'] == '':
     return redirect('/login')
-  return render_template('sell.html')
+  return render_template('sell.html', product={'type':'add'});
 
 @app.route('/search/<query>', methods = ['GET'])
 def search(query=None):
@@ -111,7 +128,8 @@ def dashboard():
   # Redirect to login if no token
   if not 'tradein_user_oauth_token' in session or session['tradein_user_oauth_token'] == '':
     return redirect('/login')
-  return render_template('dashboard.html')
+  products = db.session.query(Product).filter(Product.user_token == session['tradein_user_oauth_token'])
+  return render_template('dashboard.html', products=products)
 
 @app.route('/')
 @app.route('/index')
