@@ -11,7 +11,7 @@ class Product(db.Model):
   img2 = db.Column(db.String(64), default='')
   img3 = db.Column(db.String(64), default='')
   img4 = db.Column(db.String(64), default='')
-  price = db.Column(db.Integer, default=0)
+  price = db.Column(db.String(128), default=0)
   selltype = db.Column(db.Integer, default=0)
   view = db.Column(db.Integer, default=0)
 
