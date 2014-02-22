@@ -3,7 +3,7 @@
     <div class="navbar-header">
 
       <a class="navbar-brand" href="/"> 
-        <img src="/static/images/TradeIn2.png" width=160 height = 45> 
+        <img src="/static/images/TradeIn2.png" width=158 height = 45> 
         - Linkedin's Internal Marketplace
       </a>
     </div>
@@ -15,9 +15,9 @@
         <button id="nav-sell" type="button" class="btn btn-default navbar-btn" onclick="clickSell()">Sell</button>
 
       </ul>
-      <form class="navbar-form navbar-right" role="search" id="searchbar">
+      <form class="navbar-form navbar-right" role="search" id="searchbar" action="" onsubmit="return searchRequest()">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search" size="40">
+          <input type="text" class="form-control" placeholder="Search" size="40" id="searchf">
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
