@@ -14,7 +14,10 @@ def add_product():
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # I need this for search
   imgLink = request.form.get('imgLink')
-  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, userid='FakeSoFake', category=category, price=int(price), img1=imgLink)
+  imgLink2 = request.form.get('imgLink2')
+  imgLink3 = request.form.get('imgLink3')
+  imgLink4 = request.form.get('imgLink4')
+  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, userid='FakeSoFake', category=category, price=price, img1=imgLink, img2=imgLink2, img3=imgLink3, img4=imgLink4)
   db.session.add(prod)
   db.session.commit()
 
@@ -45,11 +48,12 @@ def edit_sell(id=None):
     return render_template('404.html'), 404
 
   prod = Product.query.get(int_id)
-  return render_template('sell.html', product=prod)
+  prod.type = 'edit';
+  return render_template('sell.html', product=prod);
 
 @app.route('/sell')
 def sell():
-  return render_template('sell.html', product={})
+  return render_template('sell.html', product={'type':'add'});
   
 @app.route('/search/<query>', methods = ['GET'])
 def search(query=None):
