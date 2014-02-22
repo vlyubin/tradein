@@ -14,7 +14,7 @@ def add_product():
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # I need this for search
   imgLink = request.form.get('imgLink')
-  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, userid='FakeSoFake', category=category, price=int(price), img1=imgLink)
+  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, userid='FakeSoFake', category=category, price=price, img1=imgLink)
   db.session.add(prod)
   db.session.commit()
 
