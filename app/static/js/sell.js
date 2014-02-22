@@ -11,7 +11,10 @@ $("#submitButton").click(function(){
     	title: $('#titlef').val(),
       category: $('#categoryf').val(),
       price: $('#pricef').val(),
-      imgLink: $('#imgLink').val()
+      imgLink: $('#imgLink').val(),
+      imgLink2: $('#imgLink2').val(),
+      imgLink3: $('#imgLink3').val(),
+      imgLink4: $('#imgLink4').val()
     },
   });
 

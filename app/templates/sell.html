@@ -5,51 +5,86 @@
 	
 <body>
 	{% include 'navbar.html' %}
-	<div class="container">
-		<form id="imageUploadForm" action="/img" method="post">
-  <img id="thumb" />
-  <input type="file" size="20" id="imageUpload">
-  <a class="button">Save</a>
-</form>
+<div class="container">
+
+
 
   <form class="form-horizontal" role="form" id="submitForm">
   	<input type="hidden" id="imgLink" name="imgLink">
-  <div class="form-group">
-    <label for="titlef" class="col-sm-2 control-label">Title</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="titlef" placeholder="Title">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="categoryf" class="col-sm-2 control-label">Category</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="categoryf" placeholder="Category">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="descf" class="col-sm-2 control-label">Description</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="descf" placeholder="Description">
-    </div>
-  </div>
-  <div class="form-group">
-    <label for="pricef" class="col-sm-2 control-label">Price</label>
-    <div class="col-sm-10">
-      <input type="text" class="form-control" id="pricef" placeholder="Price">
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <p><a class="btn btn-primary" id="submitButton">Submit</a></p>
-    </div>
-  </div>
-</form>
+  	<input type="hidden" id="imgLink2" name="imgLink2">
+  	<input type="hidden" id="imgLink3" name="imgLink3">
+  	<input type="hidden" id="imgLink4" name="imgLink4">
+	  <div class="form-group">
+	    <label for="titlef" class="col-sm-2 control-label">Title</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="titlef" placeholder="Title">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="categoryf" class="col-sm-2 control-label">Category</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="categoryf" placeholder="Category">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="descf" class="col-sm-2 control-label">Description</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="descf" placeholder="Description">
+	    </div>
+	  </div>
+	  <div class="form-group">
+	    <label for="pricef" class="col-sm-2 control-label">Price</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="pricef" placeholder="Price">
+	    </div>
+	  </div>
+	</form>
+	<form id="imageUploadForm" role="form" action="/img" method="post">
+		<div class="form-group">
+			<label for="titlef" class="col-sm-2 control-label"></label>
+			<div class="col-sm-10">
+				<input type="file" size="20" id="imageUpload">
+			</div>
+		</div>
+		<img id="thumb" max-width:"400px" max-height:"300px"/>
+	</form>
+	<form id="imageUploadForm2" role="form" action="/img" method="post">
+		<div class="form-group">
+			<label for="titlef" class="col-sm-2 control-label"></label>
+			<div class="col-sm-10">
+				<input type="file" size="20" id="imageUpload2">
+			</div>
+		</div>
+		<img id="thumb2" max-width:"400px" max-height:"300px"/>
+	</form>
+	<form id="imageUploadForm3" role="form" action="/img" method="post">
+		<div class="form-group">
+			<label for="titlef" class="col-sm-2 control-label"></label>
+			<div class="col-sm-10">
+				<input type="file" size="20" id="imageUpload3">
+			</div>
+		</div>
+		<img id="thumb3" max-width:"400px" max-height:"300px"/>
+	</form>
+	<form id="imageUploadForm4" role="form" action="/img" method="post">
+		<div class="form-group">
+			<label for="titlef" class="col-sm-2 control-label"></label>
+			<div class="col-sm-10">
+				<input type="file" size="20" id="imageUpload4">
+			</div>
+		</div>
+		<img id="thumb4" max-width:"400px" max-height:"300px"/>
+	</form>
+	  <div class="form-group">
+	    <div class="col-sm-offset-2 col-sm-10">
+	      <p><a class="btn btn-primary" id="submitButton">Submit</a></p>
+	    </div>
+	  </div>
 </div>
 
 </body>
 
 <script src="/static/js/sell.js"></script>
-
 <script src="static/js/ajaxupload.js"></script>
 <script src="static/js/img.js"></script>
 
