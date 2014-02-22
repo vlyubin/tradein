@@ -20,7 +20,7 @@ $("#submitButton").click(function(){
     });
   } else {
     request = $.ajax({
-      url: '/edit/' + $('#productId');,
+      url: '/edit/' + $('#productId'),
       type: "post",
       data: {
         desc: $('#descf').val(),
