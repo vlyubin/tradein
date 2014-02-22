@@ -2,7 +2,7 @@ from app import db
 
 class Product(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  userid = db.Column(db.String(33), default='')
+  user_token = db.Column(db.String(128), default='')
   category = db.Column(db.String(20), default='')
   descAndTitle = db.Column(db.String(1100), default='')
   desc = db.Column(db.String(1024), default='')
@@ -25,3 +25,10 @@ class Product(db.Model):
             'selltype': obj.selltype,
             'view': obj.view,
            }
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    authtoken = db.Column(db.String(256), default='')
+    mail = db.Column(db.String(256), default='')
+    pictureUrl = db.Column(db.String(256), default='')
+    name = db.Column(db.String(128), default='')
