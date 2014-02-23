@@ -62,13 +62,50 @@ def addtoken():
 # OAuth stuff ends
 #
 
+@app.route('/edit/<id>', methods = ['POST'])
+def edit(id=None):
+  try:
+    int_id = int(id)
+    if int_id == None or int_id < 0:
+      return render_template('404.html'), 404
+  except:
+    return render_template('404.html'), 404
+
+  title = str(request.form.get('title'))
+  desc = str(request.form.get('desc'))
+  category = str(request.form.get('category'))
+  price = str(request.form.get('price'))
+  descAndTitle = title + ' ' + desc # Needed for search
+
+  if not 'tradein_user_oauth_token' in session or session['tradein_user_oauth_token'] == '':
+    return redirect('/login')
+  try:
+    user = User.query.filter(User.authtoken == str(session['tradein_user_oauth_token'])).one()
+  except:
+    user = create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
+
+  prod = Product.query.get(int_id)
+  if prod.user_id != user.id: # Someone try to modify item of other user, disallow!
+    return render_template('404.html'), 404 
+
+  prod.title = title
+  prod.desc = desc
+  prod.descAndTitle = descAndTitle
+  prod.category = category
+  prod.price = price
+
+  db.session.add(prod)
+  db.session.commit()
+
+  return "/product/" + str(prod.id)
+
 @app.route('/add', methods = ['POST'])
 def add_product():
   title = str(request.form.get('title'))
   desc = str(request.form.get('desc'))
   category = str(request.form.get('category'))
   price = str(request.form.get('price'))
-  descAndTitle = title + ' ' + desc # I need this for search
+  descAndTitle = title + ' ' + desc # Needed for search
   imgLink = request.form.get('imgLink')
   imgLink2 = request.form.get('imgLink2')
   imgLink3 = request.form.get('imgLink3')
