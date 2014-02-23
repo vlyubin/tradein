@@ -1,8 +1,16 @@
 from app import db
 
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    linkedin_id = db.Column(db.String(128), default='')
+    authtoken = db.Column(db.String(256), default='')
+    mail = db.Column(db.String(256), default='')
+    pictureUrl = db.Column(db.String(256), default='')
+    name = db.Column(db.String(128), default='')
+
 class Product(db.Model):
   id = db.Column(db.Integer, primary_key=True)
-  user_token = db.Column(db.String(128), default='')
+  user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
   category = db.Column(db.String(20), default='')
   descAndTitle = db.Column(db.String(1100), default='')
   desc = db.Column(db.String(1024), default='')
@@ -25,11 +33,7 @@ class Product(db.Model):
             'selltype': obj.selltype,
             'view': obj.view,
             'img1': obj.img1,
+            'img2': obj.img2,
+            'img3': obj.img3,
+            'img4': obj.img4,
            }
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    authtoken = db.Column(db.String(256), default='')
-    mail = db.Column(db.String(256), default='')
-    pictureUrl = db.Column(db.String(256), default='')
-    name = db.Column(db.String(128), default='')

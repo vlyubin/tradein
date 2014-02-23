@@ -23,12 +23,14 @@
 			</div>
 			<div class="col-sm-2">
 				<div class="row"><a class="dashboard-btn btn btn-primary" href="/product/{{product.id}}">View</a></div>
-				<div class="row"><a class="dashboard-btn btn btn-warning">Edit</a></div>
-				<div class="row"><a class="dashboard-btn btn btn-danger">Remove</a></div>
+				<div class="row"><a class="dashboard-btn btn btn-warning" href="/sell/{{product.id}}">Edit</a></div>
+				<div class="row"><a class="dashboard-btn btn btn-danger" href="/remove/{{product.id}}">Remove</a></div>
 			</div>
 		</div>
 		{% endfor %}
 	</div>
+
+	<script src="/static/js/dashboard.js"></script>
 </body>
 
 </html>
