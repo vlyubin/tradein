@@ -24,6 +24,7 @@ class Product(db.Model):
             'price': obj.price,
             'selltype': obj.selltype,
             'view': obj.view,
+            'img1': obj.img1,
            }
 
 class User(db.Model):
