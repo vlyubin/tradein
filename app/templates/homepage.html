@@ -11,7 +11,7 @@
 			{% for product in products %}
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="http://placehold.it/300x300" alt="...">
+					<img src="{{product.img1}}" style="max-width:200px; max-height:300px;" alt="...">
 					<div class="caption product">
 						<h3>{{product.title}}</h3>
 						<p>{{product.desc}}</p>
