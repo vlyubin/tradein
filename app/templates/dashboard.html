@@ -9,27 +9,31 @@
 	<div class="container">
 		<h1>Dashboard <small>Manage your products</small></h1>
 
-		{% for product in products %}
-		<div class="row dashboard-product">
-		<hr />
-			<div>
-				<div class="col-sm-4 col-md-2">
-					<img src="{{product.img1}}" style="max-width:200px; max-height:200px;" class="dashboard-img">	
-				</div>
-				<div class="col-sm-6 col-md-8">
-					<h3>{{product.title}}</h3>
-					<p>{{product.category}}</p>
-					<p>${{product.price}}</p>
-					<p>{{product.desc}}</p>
-				</div>
-				<div class="col-sm-2">
-					<div class="row"><a class="dashboard-btn btn btn-primary" href="/product/{{product.id}}">View</a></div>
-					<div class="row"><a class="dashboard-btn btn btn-warning" href="/sell/{{product.id}}">Edit</a></div>
-					<div class="row"><a class="dashboard-btn btn btn-danger removeButton" id="{{product.id}}">Remove</a></div>
+		{% if num_products > 0 %}
+			{% for product in products %}
+			<div class="row dashboard-product">
+			<hr />
+				<div>
+					<div class="col-sm-4 col-md-2">
+						<img src="{{product.img1}}" style="max-width:200px; max-height:200px;" class="dashboard-img">	
+					</div>
+					<div class="col-sm-6 col-md-8">
+						<h3>{{product.title}}</h3>
+						<p>{{product.category}}</p>
+						<p>${{product.price}}</p>
+						<p>{{product.desc}}</p>
+					</div>
+					<div class="col-sm-2">
+						<div class="row"><a class="dashboard-btn btn btn-primary" href="/product/{{product.id}}">View</a></div>
+						<div class="row"><a class="dashboard-btn btn btn-warning" href="/sell/{{product.id}}">Edit</a></div>
+						<div class="row"><a class="dashboard-btn btn btn-danger removeButton" id="{{product.id}}">Remove</a></div>
+					</div>
 				</div>
 			</div>
-		</div>
-		{% endfor %}
+			{% endfor %}
+		{% else %}
+			<h1><small>You don't have any products on sale now.</small></h1>
+		{% endif %}
 	</div>
 
 	<script src="/static/js/dashboard.js"></script>

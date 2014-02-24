@@ -210,7 +210,7 @@ def dashboard():
     user = create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
 
   products = db.session.query(Product).filter(Product.user_id == user.id)
-  return render_template('dashboard.html', products=products)
+  return render_template('dashboard.html', products=products, num_products=products.count())
 
 @app.route('/')
 @app.route('/index')
