@@ -46,3 +46,19 @@
 	float: left;
 	padding-left: 20px;
 }
+
+.sellLeftColumn {
+	float: left;
+	width: 500px;
+	margin-right: 15px;
+}
+
+.sellRightColumn {
+	float: left;
+	width: 300px;
+}
+
+.sellContainer {
+  margin: 0 auto;
+  max-width: 900px;
+}
