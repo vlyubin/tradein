@@ -119,9 +119,22 @@ def add_product():
     user = User.query.filter(User.authtoken == str(session['tradein_user_oauth_token'])).one()
   except:
     user = create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
-
+  imgcount = 0
+  imglist = [imgLink1, imgLink2, imgLink3, imgLink4]
+  for x in range(0,4):
+    if(imglist[x] == '' ):
+	for y in  range(x+1,4):
+	  if(imglist[y] != ''):
+	    imglist[x] = imglist[y]
+ 	    imglist[y] = ''
+ 	    imgcount += 1
+	    break
+    else:
+     imgcount +=1
+  for x in range(imgcount,4):
+    imglist[x] = '/static/images/GreyTrade300x400.png'
   prod = Product(title=title, desc=desc, descAndTitle=descAndTitle, user_id=user.id, category=category, \
-    price=price, img1=imgLink1, img2=imgLink2, img3=imgLink3, img4=imgLink4, timestamp=datetime.datetime.utcnow())
+    price=price, img1=imglist[0], img2=imglist[1], img3=imglist[2], img4=imglist[3], timestamp=datetime.datetime.utcnow())
 
   db.session.add(prod)
   db.session.commit()
