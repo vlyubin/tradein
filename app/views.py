@@ -106,7 +106,7 @@ def add_product():
   category = str(request.form.get('category'))
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # Needed for search
-  imgLink = request.form.get('imgLink')
+  imgLink1 = request.form.get('imgLink1')
   imgLink2 = request.form.get('imgLink2')
   imgLink3 = request.form.get('imgLink3')
   imgLink4 = request.form.get('imgLink4')
@@ -118,7 +118,7 @@ def add_product():
   except:
     user = create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
 
-  prod = models.Product(title=title, desc=desc, descAndTitle=descAndTitle, user_id=user.id, category=category, price=price, img1=imgLink, img2=imgLink2, img3=imgLink3, img4=imgLink4)
+  prod = Product(title=title, desc=desc, descAndTitle=descAndTitle, user_id=user.id, category=category, price=price, img1=imgLink1, img2=imgLink2, img3=imgLink3, img4=imgLink4)
 
   db.session.add(prod)
   db.session.commit()
