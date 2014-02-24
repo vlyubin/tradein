@@ -2,7 +2,7 @@ from flask import request, session
 from flask import Flask, render_template, jsonify, request, redirect, url_for
 from app import app, models, db
 from flask.ext.sqlalchemy import SQLAlchemy
-from datetime import datetime
+import datetime
 import os, json
 from models import Product
 from models import User
@@ -22,7 +22,7 @@ def login():
   return redirect('https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75c20ft4h4tqkc&scope=r_basicprofile%20r_emailaddress&state=wenfui2s8923fbiuASDASDYdn23diu23dbiu23bdn23oidb3y2vd3&redirect_uri=' + request.url_root + 'addtoken');
 
 def create_or_update_user(token):
-  info_request = 'https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,picture-url,id)?oauth2_access_token=' + token
+  info_request = 'https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,picture-url,id,public-profile-url)?oauth2_access_token=' + token
   info_response = urllib2.urlopen(info_request)
   xml_response = minidom.parse(info_response)
 
@@ -30,6 +30,7 @@ def create_or_update_user(token):
   lastName = xml_response.getElementsByTagName('last-name')[0].firstChild.nodeValue
   email = xml_response.getElementsByTagName('email-address')[0].firstChild.nodeValue
   linkedin_id = xml_response.getElementsByTagName('id')[0].firstChild.nodeValue
+  publicUrl = xml_response.getElementsByTagName('public-profile-url')[0].firstChild.nodeValue
 
   try:
     picture = xml_response.getElementsByTagName('picture-url')[0].firstChild.nodeValue
@@ -40,7 +41,7 @@ def create_or_update_user(token):
     user = User.query.filter(User.linkedin_id == linkedin_id).one()
     user.authtoken = token # Update users token
   except: # Excpetion gets raised if no such user exists. Create one
-    user = User(authtoken=token, mail=email, name=firstName + ' ' + lastName, pictureUrl=picture, linkedin_id=linkedin_id)
+    user = User(authtoken=token, mail=email, name=firstName + ' ' + lastName, pictureUrl=picture, linkedin_id=linkedin_id, publicUrl=publicUrl)
 
   db.session.add(user)
   db.session.commit()
@@ -93,6 +94,7 @@ def edit(id=None):
   prod.descAndTitle = descAndTitle
   prod.category = category
   prod.price = price
+  product.timestamp = datetime.datetime.utcnow()
 
   db.session.add(prod)
   db.session.commit()
@@ -118,7 +120,8 @@ def add_product():
   except:
     user = create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
 
-  prod = Product(title=title, desc=desc, descAndTitle=descAndTitle, user_id=user.id, category=category, price=price, img1=imgLink1, img2=imgLink2, img3=imgLink3, img4=imgLink4)
+  prod = Product(title=title, desc=desc, descAndTitle=descAndTitle, user_id=user.id, category=category, \
+    price=price, img1=imgLink1, img2=imgLink2, img3=imgLink3, img4=imgLink4, timestamp=datetime.datetime.utcnow())
 
   db.session.add(prod)
   db.session.commit()
@@ -135,10 +138,12 @@ def product(id=None):
     return render_template('404.html'), 404
 
   prod = Product.query.get(int_id)
+
   if prod:
-      return render_template("pdp.html", prod=prod)
+    user = User.query.get(prod.user_id)
+    return render_template("pdp.html", prod=prod, user=user)
   else:
-      return render_template('404.html'), 404
+    return render_template('404.html'), 404
 
 @app.route('/remove/<id>', methods = ['POST'])
 def remove(id=None):
@@ -213,9 +218,10 @@ def dashboard():
   return render_template('dashboard.html', products=products, num_products=products.count())
 
 @app.route('/')
+@app.route('/home')
 @app.route('/index')
 def index():
-  products = db.session.query(Product).limit(20).all()
+  products = db.session.query(Product).order_by(Product.timestamp.desc()).limit(20).all()
   return render_template('homepage.html', products=products)
 
 def allowed_file(filename):

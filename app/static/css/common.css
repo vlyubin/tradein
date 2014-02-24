@@ -41,3 +41,8 @@
 	padding: 10px 0px;
 	width: 90%;
 }
+
+.contactDataRight {
+	float: left;
+	padding-left: 20px;
+}

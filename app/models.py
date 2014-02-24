@@ -3,6 +3,7 @@ from app import db
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     linkedin_id = db.Column(db.String(128), default='')
+    publicUrl = db.Column(db.String(128), default='')
     authtoken = db.Column(db.String(256), default='')
     mail = db.Column(db.String(256), default='')
     pictureUrl = db.Column(db.String(256), default='')
@@ -22,6 +23,7 @@ class Product(db.Model):
   price = db.Column(db.String(128), default='Free')
   selltype = db.Column(db.Integer, default=0)
   view = db.Column(db.Integer, default=0)
+  timestamp = db.Column(db.DateTime)
 
   def get_dict(obj):
     return {
