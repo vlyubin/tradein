@@ -1,7 +1,5 @@
 $("#submitButton").click(function(){
   var $form = $("#submitForm");
-  var $inputs = $form.find("input, a, textarea");
-  $inputs.prop("disabled", true);
   
   if ($('#addedit').val() === 'add') {
     request = $.ajax({
@@ -36,7 +34,6 @@ $("#submitButton").click(function(){
   });
 
   request.fail(function (jqXHR, textStatus, errorThrown){
-    $inputs.prop("disabled", false);
-    alert("Whoops, something went wrong :(" + errorThrown);
+    alert("Something went wrong :(");
   });
 });

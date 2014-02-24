@@ -140,7 +140,7 @@ def product(id=None):
   else:
       return render_template('404.html'), 404
 
-@app.route('/remove/<id>')
+@app.route('/remove/<id>', methods = ['POST'])
 def remove(id=None):
   try:
     int_id = int(id)
@@ -149,9 +149,23 @@ def remove(id=None):
   except:
     return render_template('404.html'), 404
 
-  prod = Product.query.get(int_id)
+  try:
+    user = User.query.filter(User.authtoken == str(session['tradein_user_oauth_token'])).one()
+  except:
+    user = create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
 
-  return redirect('/dashboard')
+  try:
+    prod = Product.query.get(int_id)
+  except:
+    return render_template('500.html'), 500
+
+  if prod.user_id != user.id: # You are trying to delete a product that doesn't belong to you
+    return render_template('500.html'), 500
+
+  db.session.delete(prod)
+  db.session.commit()
+
+  return "" # Means that everything went OK
 
 @app.route('/sell/<id>')
 def edit_sell(id=None):

@@ -12,19 +12,21 @@
 		{% for product in products %}
 		<div class="row dashboard-product">
 		<hr />
-			<div class="col-sm-4 col-md-2">
-				<img src="{{product.img1}}" style="max-width:200px; max-height:200px;" class="dashboard-img">	
-			</div>
-			<div class="col-sm-6 col-md-8">
-				<h3>{{product.title}}</h3>
-				<p>{{product.category}}</p>
-				<p>${{product.price}}</p>
-				<p>{{product.desc}}</p>
-			</div>
-			<div class="col-sm-2">
-				<div class="row"><a class="dashboard-btn btn btn-primary" href="/product/{{product.id}}">View</a></div>
-				<div class="row"><a class="dashboard-btn btn btn-warning" href="/sell/{{product.id}}">Edit</a></div>
-				<div class="row"><a class="dashboard-btn btn btn-danger" href="/remove/{{product.id}}">Remove</a></div>
+			<div>
+				<div class="col-sm-4 col-md-2">
+					<img src="{{product.img1}}" style="max-width:200px; max-height:200px;" class="dashboard-img">	
+				</div>
+				<div class="col-sm-6 col-md-8">
+					<h3>{{product.title}}</h3>
+					<p>{{product.category}}</p>
+					<p>${{product.price}}</p>
+					<p>{{product.desc}}</p>
+				</div>
+				<div class="col-sm-2">
+					<div class="row"><a class="dashboard-btn btn btn-primary" href="/product/{{product.id}}">View</a></div>
+					<div class="row"><a class="dashboard-btn btn btn-warning" href="/sell/{{product.id}}">Edit</a></div>
+					<div class="row"><a class="dashboard-btn btn btn-danger removeButton" id="{{product.id}}">Remove</a></div>
+				</div>
 			</div>
 		</div>
 		{% endfor %}
