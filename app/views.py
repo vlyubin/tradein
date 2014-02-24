@@ -108,7 +108,7 @@ def add_product():
   category = str(request.form.get('category'))
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # Needed for search
-  imgLink1 = request.form.get('imgLink1')
+  imgLink1 = request.form.get('imgLink')
   imgLink2 = request.form.get('imgLink2')
   imgLink3 = request.form.get('imgLink3')
   imgLink4 = request.form.get('imgLink4')
