@@ -46,6 +46,8 @@ def create_or_update_user(token):
   db.session.add(user)
   db.session.commit()
 
+  return user
+
 @app.route('/addtoken')
 def addtoken():
   code = request.args.get('code', '')
