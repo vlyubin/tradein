@@ -24,6 +24,8 @@ class Product(db.Model):
   selltype = db.Column(db.Integer, default=0)
   view = db.Column(db.Integer, default=0)
   timestamp = db.Column(db.DateTime)
+  imglist = db.Column(db.String(1600),default='')
+  imcount = db.Column(db.Integer,default=0)
 
   def get_dict(obj):
     return {
@@ -38,4 +40,6 @@ class Product(db.Model):
             'img2': obj.img2,
             'img3': obj.img3,
             'img4': obj.img4,
+	    'imglist': obj.imglist,
+	    'imgcount': obj.imgcount,
            }
