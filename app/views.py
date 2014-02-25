@@ -79,6 +79,8 @@ def edit(id=None):
   category = str(request.form.get('category'))
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # Needed for search
+  imglist = request.form.get('imglist')
+  imgcount = int(request.form.get('imgcount'))
 
   if not 'tradein_user_oauth_token' in session or session['tradein_user_oauth_token'] == '':
     return redirect('/login')
@@ -90,6 +92,11 @@ def edit(id=None):
   prod = Product.query.get(int_id)
   if prod.user_id != user.id: # Someone try to modify item of other user, disallow!
     return render_template('404.html'), 404 
+    
+  # Put at least one image
+  if(imgcount == 0):
+    imgcount = 1
+    imglist = '/static/images/GreyTrade300x400.png'
 
   prod.title = title
   prod.desc = desc
@@ -97,6 +104,8 @@ def edit(id=None):
   prod.category = category
   prod.price = price
   product.timestamp = datetime.datetime.utcnow()
+  prod.imglist = imglist
+  prod.imgcount = imgcount
 
   db.session.add(prod)
   db.session.commit()
@@ -110,10 +119,8 @@ def add_product():
   category = str(request.form.get('category'))
   price = str(request.form.get('price'))
   descAndTitle = title + ' ' + desc # Needed for search
-  imgLink1 = request.form.get('imgLink')
-  imgLink2 = request.form.get('imgLink2')
-  imgLink3 = request.form.get('imgLink3')
-  imgLink4 = request.form.get('imgLink4')
+  imglist = request.form.get('imglist')
+  imgcount = int(request.form.get('imgcount'))
 
   if not 'tradein_user_oauth_token' in session or session['tradein_user_oauth_token'] == '':
     return redirect('/login')
@@ -121,22 +128,13 @@ def add_product():
     user = User.query.filter(User.authtoken == str(session['tradein_user_oauth_token'])).one()
   except:
     user = create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
-  imgcount = 0
-  imglist = [imgLink1, imgLink2, imgLink3, imgLink4]
-  for x in range(0,4):
-    if(imglist[x] == '' ):
-	for y in  range(x+1,4):
-	  if(imglist[y] != ''):
-	    imglist[x] = imglist[y]
- 	    imglist[y] = ''
- 	    imgcount += 1
-	    break
-    else:
-     imgcount +=1
-  for x in range(imgcount,4):
-    imglist[x] = '/static/images/GreyTrade300x400.png'
+  # Put at least one image
+  if(imgcount == 0):
+    imgcount = 1
+    imglist = '/static/images/GreyTrade300x400.png'
+
   prod = Product(title=title, desc=desc, descAndTitle=descAndTitle, user_id=user.id, category=category, \
-    price=price, img1=imglist[0], img2=imglist[1], img3=imglist[2], img4=imglist[3], timestamp=datetime.datetime.utcnow())
+    price=price, imglist=imglist, imgcount=imgcount, timestamp=datetime.datetime.utcnow())
 
   db.session.add(prod)
   db.session.commit()

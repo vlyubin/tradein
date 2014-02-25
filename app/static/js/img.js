@@ -17,7 +17,7 @@ $(document).ready(function(){
       if(response.error) {
         alert("Upload error " + response.error);
       }
-      if(completeCallback) {
+      else if(completeCallback) {
         completeCallback(response.file)
       }
     }
