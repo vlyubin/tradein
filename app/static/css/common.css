@@ -49,16 +49,35 @@
 
 .sellLeftColumn {
     float: left;
-    width: 500px;
+    width: 600px;
     margin-right: 15px;
 }
 
 .sellRightColumn {
     float: left;
-    width: 300px;
+    width: 385px;
 }
 
-.sellContainer {
+.smallContainer {
   margin: 0 auto;
-  max-width: 900px;
+  max-width: 1000px;
+}
+
+.sellText {
+    text-align:right;
+    float:left;
+    width: 100px;
+}
+
+.sellInput {
+    margin-top: 4px;
+}
+
+#errorLabel {
+    color: red;
+}
+
+#submitButton {
+    margin-left: 100px;
+    float: left;
 }

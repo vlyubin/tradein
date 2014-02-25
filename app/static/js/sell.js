@@ -2,7 +2,18 @@ $(document).ready(function(){
   var $thumbs = $("#thumbnails");
   var $form = $("#submitForm");
 
+  $(".sellInput").focus(function() {
+    $("#errorLabel").html("&nbsp;");
+  });
+
   $("#submitButton").click(function(){
+
+    if ($("#titlef").val() == '' || $("#categoryf").val() == '' ||
+        $("#descf").val() == '' || $("#pricef").val() == '') {
+      $("#errorLabel").html("Error! One of the mandatory fields was left empty!");
+      return;
+    }
+
     var images = getImages();
     console.log(images.join());
     var data = {
