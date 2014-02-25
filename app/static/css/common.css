@@ -55,10 +55,10 @@
 
 .sellRightColumn {
     float: left;
-    width: 300px;
+    width: 385px;
 }
 
-.sellContainer {
+.smallContainer {
   margin: 0 auto;
   max-width: 1000px;
 }
@@ -71,4 +71,13 @@
 
 .sellInput {
     margin-top: 4px;
+}
+
+#errorLabel {
+    color: red;
+}
+
+#submitButton {
+    margin-left: 100px;
+    float: left;
 }

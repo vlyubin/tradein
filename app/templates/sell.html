@@ -5,7 +5,7 @@
     
 <body>
     {% include 'navbar.html' %}
-<div class="sellContainer">
+<div class="smallContainer">
     <div class="page-header">
     {% if product.type == 'add' %}
         <h1>New Product</h1>
@@ -59,16 +59,15 @@
             </form>
             <div>&nbsp;</div>
         </div>
+
+        <h4 class="sellText">&nbsp;</h4>
+        <h4 id="errorLabel">&nbsp;</h4>
+        <a class="btn btn-primary" id="submitButton">Submit</a>
+        
     </div>
     <div class="sellRightColumn">
         <h4><small>Enter information about product you are looking to sell.</small></h4>
         <h4><small>For the price, you can either enter a value, or specify what you want to get in return (e.g. trade a book for another book). You can also specify an item to be free.</small></h4>
-    </div>
-    
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <p><a class="btn btn-primary" id="submitButton">Submit</a></p>
-      </div>
     </div>
 </div>
 
