@@ -25,7 +25,7 @@ class Product(db.Model):
   view = db.Column(db.Integer, default=0)
   timestamp = db.Column(db.DateTime)
   imglist = db.Column(db.String(1600),default='')
-  imcount = db.Column(db.Integer,default=0)
+  imgcount = db.Column(db.Integer,default=0)
 
   def get_dict(obj):
     return {

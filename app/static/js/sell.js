@@ -4,34 +4,26 @@ $(document).ready(function(){
 
   $("#submitButton").click(function(){
     var images = getImages();
-    while(images.length < 4) {
-      images.push("");
-    }
-    if ($('#addedit').val() === 'add') {
-      request = $.ajax({
-        url: '/add',
-        type: "post",
-        data: {
+    console.log(images.join());
+    var data = {
           desc: $('#descf').val(),
           title: $('#titlef').val(),
           category: $('#categoryf').val(),
           price: $('#pricef').val(),
-          imgLink: images[0],
-          imgLink2: images[1],
-          imgLink3: images[2],
-          imgLink4: images[3]
-        },
+          imglist: images.join(),
+          imgcount: images.length
+        };
+    if ($('#addedit').val() === 'add') {
+      request = $.ajax({
+        url: '/add',
+        type: "post",
+        data: data,
       });
     } else {
       request = $.ajax({
         url: '/edit/' + $('#productId').val(),
         type: "post",
-        data: {
-          desc: $('#descf').val(),
-          title: $('#titlef').val(),
-          category: $('#categoryf').val(),
-          price: $('#pricef').val(),
-        },
+        data: data,
       });
     }
 
