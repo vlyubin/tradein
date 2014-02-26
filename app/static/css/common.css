@@ -55,3 +55,10 @@
     margin-left: 100px;
     float: left;
 }
+
+img.homepage {
+    max-width: 200px;
+    max-height: 200px;
+    height: auto;
+    border-radius: 10px;
+}

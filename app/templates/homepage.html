@@ -9,14 +9,14 @@
 	<div class="container">
 		<div class="row">
 			{% for product in products %}
-			<div class="col-sm-6 col-md-3">
+  			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img src="{{product.image()}}" style="max-width:200px; height:200px; border-radius: 10px;" alt="...">
+					<img class="homepage" src="{{product.image()}}" alt="...">
 					<div class="caption product">
 						<h3>{{product.title}}</h3>
 						<p>{{product.desc}}</p>
 					</div>
-					<p><a href="/product/{{product.id}}" class="btn btn-primary" role="button" id="view-btn">View</a></p>
+						<p><a href="/product/{{product.id}}" class="btn btn-primary" role="button" id="view-btn">View</a></p>
 				</div>
 			</div>
 			{% endfor %}

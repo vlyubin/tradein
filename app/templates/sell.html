@@ -62,8 +62,16 @@
 			<h4><small>For the price, you can either enter a value, or specify what you want to get in return (e.g. trade a book for another book). You can also specify an item to be free.</small></h4>
 		</div>
 	</div>
-	<script src="/static/js/ajaxupload.js"></script>
+	<script src="/static/js/ajaxupload.js" type=""></script>
 	<script src="/static/js/img.js"></script>
 	<script src="/static/js/sell.js"></script>
+	<script>
+	$(document).ready(function(){
+		var imglist = "{{product.imglist}}".split(",");
+		for(var i = 0; i < imglist.length; i++) {
+			SELL.addImage(imglist[i]);
+		}
+	});
+	</script>
 </body>
 </html>
