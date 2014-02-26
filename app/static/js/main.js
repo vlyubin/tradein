@@ -17,3 +17,25 @@ var searchRequest = function() {
 		return true;
 	}
 }
+var user = {};
+
+$(function(){
+	request = $.ajax({
+		url: "/user",
+		type: "get",
+	});
+
+	request.success(function (response, textStatus, jqXHR){
+		console.log(response);
+		if (response.user.name) {
+			user = response.user
+			$('#user-notice').append("Signed in as " + response.user.name);
+		} else {
+			user = response.user
+		}
+	});
+
+	request.fail(function (jqXHR, textStatus, errorThrown){
+		alert("Error getting user :(");
+	});
+});

@@ -6,16 +6,16 @@
 <body>
 	{% include 'navbar.html' %}
 
-	<div class="smallContainer">
+	<div class="container">
 		<h1>Dashboard <small>Manage your products</small></h1>
 
 		{% if num_products > 0 %}
 			{% for product in products %}
-			<div class="row dashboard-product">
 			<hr />
-				<div>
+			<div class="well dashboard-product">
+				<div class="row">
 					<div class="col-sm-4 col-md-2">
-						<img src="{{product.imglist.split(',')[0]}}" style="max-width:200px; max-height:200px;" class="dashboard-img">	
+						<img src="{{product.image()}}" style="max-width:200px; max-height:200px;" class="dashboard-img">	
 					</div>
 					<div class="col-sm-6 col-md-8">
 						<h3>{{product.title}}</h3>
