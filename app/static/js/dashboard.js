@@ -8,7 +8,7 @@ $(".removeButton").click(function(event) {
 	});
 
 	request.success(function (response, textStatus, jqXHR){
-		element.parent().parent().parent().hide();
+		element.parent().parent().parent().parent().hide();
 	});
 
 	request.fail(function (jqXHR, textStatus, errorThrown){
