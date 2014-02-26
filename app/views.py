@@ -80,6 +80,9 @@ def user_loggedin():
 @app.route('/index')
 def page_index():
 	products = db.session.query(Product).order_by(Product.timestamp.desc()).limit(20).all()
+	for product in products:
+		product.desc = " ".join(product.desc.split()[:30]) + "..." if len(product.desc.split()) > 30 else product.desc
+
 	return render_template('homepage.html', products=products)
 
 #################################

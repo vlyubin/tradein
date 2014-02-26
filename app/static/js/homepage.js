@@ -5,6 +5,7 @@ var currentTallest = 0,
 		topPosition = 0;
 
 $('.product').each(function() {
+	alert('hi');
 	$el = $(this);
 	topPostion = $el.position().top;
 	
