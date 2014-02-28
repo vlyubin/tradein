@@ -15,10 +15,10 @@
 			<div class="well dashboard-product">
 				<div class="row">
 					<div class="col-sm-4 col-md-2">
-						<img src="{{product.image()}}" style="max-width:200px; max-height:200px;" class="dashboard-img">	
+						<a href="/product/{{product.id}}"><img src="{{product.image()}}" style="max-width:200px; max-height:200px;" class="dashboard-img"></a>
 					</div>
 					<div class="col-sm-6 col-md-8">
-						<h3>{{product.title}}</h3>
+						<a href="/product/{{product.id}}"><h3 style="margin-top: 0px;">{{product.title}}</h3></a>
 						<p>{{product.category}}</p>
 						<p>{{product.price}}</p>
 						<p>{{product.desc}}</p>

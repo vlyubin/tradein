@@ -62,7 +62,7 @@ img.homepage {
     max-height: 200px;
     height: auto;
     border-radius: 10px;
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
 .homepageThumbnail {
