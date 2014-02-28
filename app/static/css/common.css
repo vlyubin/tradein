@@ -48,10 +48,12 @@
 
 #errorLabel {
     color: red;
+    padding-left: 110px;
 }
 
 #submitButton {
-    margin-left: 100px;
+    margin-left: 110px;
+    width: 150px;
     float: left;
 }
 

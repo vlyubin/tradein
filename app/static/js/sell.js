@@ -4,8 +4,8 @@ $(document).ready(function(){
 	var $thumbs = $("#thumbnails");
 	var $form = $("#submitForm");
 
-	$(".sellInput").focus(function() {
-		$("#errorLabel").html("&nbsp;");
+	$(".form-control").focus(function() {
+		$("#errorLabel").hide();
 	});
 
 	$("#submitButton").click(function(){
@@ -13,6 +13,7 @@ $(document).ready(function(){
 		if ($("#titlef").val() == '' || $("#categoryf").val() == '' ||
 				$("#descf").val() == '' || $("#pricef").val() == '') {
 			$("#errorLabel").html("Error! One of the mandatory fields was left empty!");
+			$("#errorLabel").show();
 			return;
 		}
 
