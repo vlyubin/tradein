@@ -49,6 +49,9 @@ $(document).ready(function(){
 	});
 
 	function addImage(file_url) {
+		if(!file_url || file_url.trim() == "") {
+			return;
+		}
 		var div = $("<div/>", {class: "panel panel-default"});
 		var title = $("<div/>", {class: "panel-heading"})
 			.append($("<a/>", {href: file_url, text: "[Full picture]", target: "_blank"}))
