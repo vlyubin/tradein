@@ -1,7 +1,6 @@
 #view-btn {
     display: block;
     margin: 10px auto auto auto;
-    width: 90%;
 }
 
 #submitDiv {
@@ -61,4 +60,15 @@ img.homepage {
     max-height: 200px;
     height: auto;
     border-radius: 10px;
+    padding-top: 10px;
+}
+
+.homepageThumbnail {
+    width: 200px;
+    text-align: center;
+    margin: 0px auto auto auto;
+}
+
+.homepageProductTitle {
+    margin-top: 10px;
 }
