@@ -234,7 +234,7 @@ def save_product_from_request(user, product=None):
 	# Put at least one image
 	if(imgcount == 0):
 		imgcount = 1
-		imglist = '/static/images/GreyTrade300x400.png'
+		imglist = '/static/images/default.jpg'
 
 	if product == None:
 		product = Product(title=title, desc=desc, descAndTitle=descAndTitle, user_id=user.id, category=category, \
