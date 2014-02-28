@@ -10,6 +10,7 @@
 			<h3>Search Results for "{{query}}":</h3>
 		</div>
 		<div class="row">
+		{% if products|length > 0 %}
 			{% for product in products %}
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
@@ -22,6 +23,9 @@
 				</div>
 			</div>
 			{% endfor %}
+		{% else %}
+			<h1><small>There were no results for your search.</small></h1>
+		{% endif %}
 		</div>
 	</div>
 
