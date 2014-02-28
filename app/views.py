@@ -219,7 +219,14 @@ def save_product_from_request(user, product=None):
 	title = str(request.form.get('title'))
 	desc = str(request.form.get('desc'))
 	category = str(request.form.get('category'))
-	price = str(request.form.get('price'))
+
+	# If we were passed a number, append a dollar sign to it
+	try:
+		float(str(request.form.get('price')))
+		price = str(request.form.get('price')) + "$"
+	except:
+		price = str(request.form.get('price'))
+
 	descAndTitle = title + ' ' + desc # Needed for search
 	imglist = str(request.form.get('imglist'))
 	imgcount = int(request.form.get('imgcount'))
