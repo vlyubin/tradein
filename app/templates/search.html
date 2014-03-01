@@ -14,8 +14,10 @@
 			{% for product in products %}
 			<div class="col-sm-6 col-md-3">
 				<div class="thumbnail">
-					<img class="homepage" src="{{product.image()}}" alt="...">
-					<div class="homepageThumbnail">
+					<div class="image-wrapper">
+						<img class="homepage" src="{{product.image()}}" alt="...">
+					</div>
+					<div class="homepageThumbnail homepageDesc">
 						<h3 class="homepageProductTitle">{{product.title}}</h3>
 						<p>{{product.desc}}</p>
 					</div>

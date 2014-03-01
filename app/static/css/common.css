@@ -57,18 +57,28 @@
     float: left;
 }
 
+.image-wrapper {
+    margin: 5px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
 img.homepage {
-    max-width: 200px;
-    max-height: 200px;
-    height: auto;
-    border-radius: 10px;
-    margin-top: 10px;
+    height: 200px;
+}
+
+.thumbnail {
+    height: 420px;
 }
 
 .homepageThumbnail {
     width: 200px;
     text-align: center;
     margin: 0px auto auto auto;
+}
+
+.homepageDesc {
+    height: 140px;
 }
 
 .homepageProductTitle {

@@ -81,7 +81,7 @@ def user_loggedin():
 def page_index():
 	products = db.session.query(Product).order_by(Product.timestamp.desc()).limit(20).all()
 	for product in products:
-		product.desc = " ".join(product.desc.split()[:30]) + "..." if len(product.desc.split()) > 30 else product.desc
+		product.desc = " ".join(product.desc[:150].split(" ")[:-1]) + "..." if len(product.desc) > 150 else product.desc
 
 	return render_template('homepage.html', products=products)
 
@@ -106,6 +106,9 @@ def page_dashboard():
 def page_search(query=None):
 	query = str(query)
 	products = db.session.query(Product).filter(Product.descAndTitle.like("%" + query + "%")).limit(100).all()
+	for product in products:
+		product.desc = " ".join(product.desc[:150].split(" ")[:-1]) + "..." if len(product.desc) > 150 else product.desc
+
 	return render_template('search.html', query=query, products=products)
 
 #################################
