@@ -47,7 +47,7 @@
 }
 
 #errorLabel {
-    color: red;
+    color: #bf0000;
     padding-left: 110px;
 }
 
@@ -83,4 +83,16 @@ img.homepage {
 
 .homepageProductTitle {
     margin-top: 10px;
+}
+
+#imageUpload {
+    position: absolute;
+    width: 150px;
+    opacity: 0;
+    -moz-opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+#chooseImg {
+    width: 150px;
 }

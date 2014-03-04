@@ -8,6 +8,10 @@ $(document).ready(function(){
 		$("#errorLabel").hide();
 	});
 
+	//$("#chooseImg").click(function() {
+	//	$("#imageUpload").click();
+	//});
+
 	$("#submitButton").click(function(){
 
 		if ($("#titlef").val() == '' || $("#categoryf").val() == '' ||
