@@ -124,9 +124,14 @@ def page_product(id=None):
 	except:
 		return err404()
 
-	product = Product.query.get(int_id)
+	product = db.session.query(Product).get(int_id)
 	if product:
-		user = User.query.get(product.user_id)
+		user = db.session.query(User).get(product.user_id)
+
+		product.view += 1 # We just viewed the product page
+		db.session.add(product)
+		db.session.commit()
+
 		return render_template("pdp.html", prod=product, user=user)
 	else:
 		return err404()
