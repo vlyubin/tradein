@@ -61,14 +61,17 @@
     margin: 5px;
     overflow: hidden;
     border-radius: 5px;
+    max-width: inherit;
+    text-align: center;
 }
 
 img.homepage {
     height: 200px;
+    /* margin: 0 auto; */
 }
 
 .thumbnail {
-    height: 420px;
+    height: 478px;
 }
 
 .homepageThumbnail {
