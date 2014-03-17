@@ -36,6 +36,7 @@ $(function(){
 	});
 
 	request.fail(function (jqXHR, textStatus, errorThrown){
-		alert("Error getting user :(");
+		console.log("Error getting user :("); // Can happen if token expired. We don't force user
+		// to login again unless they go to dashboard or sell pages
 	});
 });

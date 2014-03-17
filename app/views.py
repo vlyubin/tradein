@@ -15,17 +15,20 @@ from xml.dom import minidom
 
 @app.before_first_request
 def before_first_request():
-		session['user_oauth_token'] = None
-		session['user_oauth_secret'] = None
+		session['tradein_user_oauth_token'] = None
+		session['tradein_user_oauth_secret'] = None
 
 @app.route('/login')
 def login():
 	return redirect('https://www.linkedin.com/uas/oauth2/authorization?response_type=code&client_id=75c20ft4h4tqkc&scope=r_basicprofile%20r_emailaddress&state=wenfui2s8923fbiuASDASDYdn23diu23dbiu23bdn23oidb3y2vd3&redirect_uri=' + request.url_root + 'addtoken');
 
 def create_or_update_user(token):
-	info_request = 'https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,picture-url,id,public-profile-url)?oauth2_access_token=' + token
-	info_response = urllib2.urlopen(info_request)
-	xml_response = minidom.parse(info_response)
+	try:
+		info_request = 'https://api.linkedin.com/v1/people/~:(first-name,last-name,email-address,picture-url,id,public-profile-url)?oauth2_access_token=' + token
+		info_response = urllib2.urlopen(info_request)
+		xml_response = minidom.parse(info_response)
+	except:
+		return None
 
 	firstName = xml_response.getElementsByTagName('first-name')[0].firstChild.nodeValue
 	lastName = xml_response.getElementsByTagName('last-name')[0].firstChild.nodeValue
@@ -68,6 +71,7 @@ def user_get():
 		return User.query.filter(User.authtoken == str(session['tradein_user_oauth_token'])).one()
 	except:
 		return create_or_update_user(str(session['tradein_user_oauth_token'])) # It looks like the token wasn't recognized. Update it
+
 def user_loggedin():
 	return 'tradein_user_oauth_token' in session and session['tradein_user_oauth_token'] != ''
 
@@ -94,6 +98,9 @@ def page_dashboard():
 	if not user_loggedin():
 		return redirect('/login')
 	user = user_get()
+
+	if user == None:
+		return redirect('/login')
 
 	products = db.session.query(Product).filter(Product.user_id == user.id)
 	return render_template('dashboard.html', products=products, num_products=products.count())
@@ -144,6 +151,10 @@ def page_product(id=None):
 def page_sell_new():
 	if not user_loggedin():
 		return redirect('/login')
+	user = user_get()
+	if user == None:
+		return redirect('/login')
+
 	return render_template('sell.html', product={'type':'add'});
 
 @app.route('/sell/<id>')
@@ -151,6 +162,8 @@ def page_sell_edit(id=None):
 	if not user_loggedin():
 		return redirect('/login')
 	user = user_get()
+	if user == None:
+		return redirect('/login')
 
 	try:
 		product_id = int(id)
@@ -272,6 +285,9 @@ def get_current_user():
 		return jsonify(user='{}')
 
 	user = user_get()
+	if user == None:
+		return jsonify(user='{}')
+
 	return jsonify(user=user.serialize())
 
 
