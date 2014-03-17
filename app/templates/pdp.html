@@ -14,13 +14,13 @@
 				</div>
 				<div class="panel-body">
 					<p>
-						<span style="font-weight:bold">Price:</span> {{ prod.price|safe }} <br>
-					</p>
-					<p>
 						<span style="font-weight:bold">Category:</span> {{ prod.category|safe }} <br>
 					</p>
 					<p>
-						<span style="font-weight:bold">Description:</span> {{ prod.desc|safe }}
+						<span style="font-weight:bold">Price:</span> {{ prod.price|safe }} <br>
+					</p>
+					<p>
+						<span style="font-weight:bold">Description:</span> {{ prod.desc.split('\n')|join('<br>'|safe) }}
 					</p>
 					<p>
 						<span style="font-weight:bold">Page views:</span> {{ prod.view|safe }}
