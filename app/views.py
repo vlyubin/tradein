@@ -55,7 +55,10 @@ def create_or_update_user(token):
 @app.route('/addtoken')
 def addtoken():
 	code = request.args.get('code', '')
-	response = urllib2.urlopen('https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&code=' + code + '&redirect_uri=' + request.url_root + 'addtoken&client_id=75c20ft4h4tqkc&client_secret=ZPYvP8NPtMRuYB4l')
+	try:
+		response = urllib2.urlopen('https://www.linkedin.com/uas/oauth2/accessToken?grant_type=authorization_code&code=' + code + '&redirect_uri=' + request.url_root + 'addtoken&client_id=75c20ft4h4tqkc&client_secret=ZPYvP8NPtMRuYB4l')
+	except: # You can get urllib2.HTTPError if user denies permission. Redirect back to main.
+		return redirect('/')
 	obj = json.loads(response.read())
 
 	key = obj.get('access_token')
